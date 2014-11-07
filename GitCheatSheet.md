@@ -1,21 +1,44 @@
 # Git cheat sheet (reference card) for Mac OS X
 ### OR: Things I had to look up between uses and was afraid to ask
 For sources, see end of this document.
+Also see https://guides.github.com/introduction/getting-your-project-on-github/
+for the desktop version (some notes on that are interspersed  in this document).
 ### Glossary
 > ###Gitese. Terms used by git all the time:
 >To ***initialize*** a directory: via $ git init; Lets git know the local directory exists  
-To ***stage*** a file: via $ git add; Tells git you've changed a file usually because likely be commiting it.  
-To ***commit*** a local repository; Tells git that all the pending 'staged' files are ready to be made official latest version of the git.  
-To **push** last commited changes to the GIthub Web repository.  
-A ***README*** file. It must be called this (or README.md for markdown files).The file in the local git directory that will be the 'guide' document on the Git Web Repo for yourproject.
+
+
+>To ***stage*** a file: via $ git add; Tells git you've changed a file usually because likely be commiting it.  
+
+
+>To ***commit*** a local repository; Tells git that all the pending 'staged' files are ready to be made official latest version of the git.  
+
+
+>To **push** last commited changes to the GIthub Web repository.  
+>file in the local git directory that will be the 'guide' document on the Git Web Repo for yourproject.
+
+
 ### Other notation used here:
-***Local git directory*** : where a project is kept locally and where changes are made to your project using ordinary tools
-*** Github Web Repo *** a place on the Github server farm where your project can be 'published'.  
-***'[SomeName]'*** indicates an arbitrary name or text chosen by user.
-Mostly such things will indicate local directory names, local filenames or
-Github Web repository names. The labels will remain stable when they refer to the same thing as a previous usage. So two occurrences of ['LocalDirA'] will refer the same directory. While '[LocalDirB]'will be a different one.  
-***Special rubric comments on git and other terminal commands*** Some comments will be added after terminal commands with
-` $ command #-- This is a special rubric comment: do not type it` They aren't part of the commands and should NOT  be typed.  
+> ***Local git directory*** : where a project is kept locally and where changes are made to your project using ordinary tools
+
+
+> *** Github Web Repo *** or *** Remote Repository *** a place on the Github server farm where your project can be 'published'.  
+
+
+> ***'[SomeString]'*** indicates an arbitrary stretch of text in single quotes chosen by user.
+
+> ***'[[SomeLocalDirectoryOrFileName]]'***  with double square brackets is a string that represents a  user's local directory name or file name.
+
+> ***'{{SomeRemoteRepositoryName}}'***  with double curly braces is a string that represents the name of a remote repository. The [[]] and {{ }} aren't typed, they're just semantic tags to keep straignt what name is refering to a local object and what is refering to something on the web.
+
+> The labels will remain stable when they refer to the same thing as a previous usage. So two occurrences of ['LocalDirA'] will refer the same directory. While '[LocalDirB]'will be a different one.
+
+> Your local project directory,  say '[[NewDemoProject]]' typically has to match names with the remote directory name ''{{NewDemoProject}}' '
+
+
+>***Special rubric comments on git and other terminal commands*** Some comments may be added after terminal commands with a special 3 charcter sequence #--  
+` $ command #-- This is a special rubric comment: do not type it`  
+ They aren't part of the commands and should NOT  be typed.  
 
 
 
@@ -40,34 +63,51 @@ Give your new Github Web Repository a name in the next window
 
 
 ### Step 2) Establishing link between a local directory  and a GitHub Web Repo for the first time
-Assume I've created a Github Web Repo in Step 1 and called it  ***'[NewProject]'***
-
-
-Thie files for this project will be in the ***local*** directory called:  ***'[NewProjectDirectory]'***
+There are a lot of small steps to this. Assume I've created a Github Web Repo in Step 1 and called it. ***'{{NewDemoProject}}'***  
+The files for this project will be in the ***local*** directory called:  ***'[][NewDemoProject]]' ***
 
 #### Step 2a.  Navigate to the local git directory
 Everything git does with this project on your machine will happen here.
 ```
 $ cd '[LocalGitProjectDirectory]'  
 ```
+
 #### Step 2b. Initialize the git. Let git know it will be managing the local directory.
 ```
 $ git init  #-- initialize a local diectory as a git directory
 ```
-#### Step 2c prepare (gitese 'stage') any files for initial 'commit'.
+[For the desktop APP you can do the equivalent of Steps 2a and 2b by dragging the '[LocalGitProjectDirectory]' to the big blank rectangular area.]
+
+
+
+#### Step 2c: prepare (stage) any files for initial commit.
 (See glossary at top of this document.)
-Here I'll just create an empty README file. This will become the summary info file on the Github Web repo when you finally post it. This is NOT a git command, just vanilla unix.
+Here I'll just create an empty README file. This will become the summary
+info file on the Github Web repo when you finally post it.
+This is NOT a git command, just vanilla unix.
+
 ```
 $ touch README  #-- creates an empty README file a local diectory as a git
  directory
  ```
- Step 2d make git aware
+
+ #### Step 2d make git aware
  ```
 $ git add README  
 ```
-Now m
+Git now knows this file is likely to be committed (see next step).
+
+#### Step 2e Initial commit
+```
 $ git commit -m '[CommentForFirstCommit]'  
-$ git remote add origin 'github@github.com:['UserGithubName']/'[NameOf Github WebRepo>].git'  
+```
+This tells git that you're serious about committing all the files that
+you've staged (via add command) since your last commit (or from scratch asin this case).
+### Step 2f: Establish a between  your local directory and the git Remote repository
+```
+$ git remote add origin 'github@github.com:['UserGithubName']/'[NameOf Github WebRepo>].git'
+```
+### Step 2g Push (publish) the last committed changes to the remote Github Reposatory
 git push origin master
 ```
 ## Revising local directory to existing Github Web Repo
