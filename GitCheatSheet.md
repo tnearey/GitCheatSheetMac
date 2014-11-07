@@ -4,7 +4,22 @@
 #### See editorial near end
 This is based on and contains excerpts from:
 http://git-scm.com/book/en/v1/Git-Basics-Getting-a-Git-Repository
-
+## Really short versionafter ConnorD/ Youtube video.
+### Download and install Git:
+git config --global user.name "<User's name or aka>"
+git config --global user.email "< User's email address >"
+### Commiting a local directory
+cd '<Git Local Repository Directory>'
+git init
+touch README
+git add README
+git commit -m '<Comment for first commit> '
+git remote add origin 'github@github.com:<User's Short Github Name'>/'<Name of repository on Github Web>.git'
+git push origin master
+## Revising existing (modified) local directory to existing Github Web repository
+cd '<Existing local repository already posted at least once to web>'
+git remote add origin 'github@github.com:<User's Short Github Name'>/'<Name of repository on Github Web you are updating>.git'
+git push origin master
 ## L As of 6 Nov 2014 at least somethings need to be done by hand in Bash/Dariwn
 
 ## Stage 1: Local repository only: Creation, 'tracking' and 'committing'
@@ -77,3 +92,12 @@ git commit -m 'A new message after the last change'
 ```
 
 ##Stage 2. Posting to the web
+
+This can be done initially the GitHub app, but it's not obvious  
+1) Start GitHub app.
+2) Navigate to main menu item: [ Apple ] **[File]**  
+  ---- [GitHub Main menu]: File: Open Local Repository: *< choose directory manually >*  
+3) Navigate to main menu item:  [ Apple ] [File] [Edit] [View] **[Repository]**
+        ---- [Github Main Menu]: Repository : Push  
+  Then you'll see it in the left panel and can right click to see it on the GitHub web.  
+  Now big question is how to revise.
