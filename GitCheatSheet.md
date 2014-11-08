@@ -1,8 +1,13 @@
-# Git cheat sheet (reference card) for Mac OS X
+# GitHub cheat sheet (reference card) for Mac OS X
 ### OR: Things I had to look up between uses and was afraid to ask
 For sources, see end of this document.
 Also see https://guides.github.com/introduction/getting-your-project-on-github/
 for the desktop version (some notes on that are interspersed  in this document).
+This repository also contains a couple of annotated screenshots of the GitHub Desktop App that may be helpful.
+
+[ScreenShot1](https://github.com/tnearey/GitCheatSheetMac/blob/master/GitHub_DesktopApp_Mac_7Nov2014Page1.png)  
+[ScreenShot2](https://github.com/tnearey/GitCheatSheetMac/blob/master/GitHub_DesktopApp_Mac_7Nov2014Page2.png)
+
 ### Glossary
 > ###Gitese. Terms used by git all the time:
 >To ***initialize*** a directory: via $ git init; Lets git know the local directory exists  
@@ -29,11 +34,11 @@ for the desktop version (some notes on that are interspersed  in this document).
 
 > ***'[[SomeLocalDirectoryOrFileName]]'***  with double square brackets is a string that represents a  user's local directory name or file name.
 
-> ***'{{SomeRemoteRepositoryName}}'***  with double curly braces is a string that represents the name of a remote repository. The [[]] and {{ }} aren't typed, they're just semantic tags to keep straignt what name is refering to a local object and what is refering to something on the web.
+> ***'{{SomeRemoteRepositoryName}}'***  with double curly braces is a string that represents the name of a remote repository. The [[]] and {{ }} aren't typed, they're just semantic decoration to keep straignt what name is refering to a local object and what is refering to something on the web.
 
 > The labels will remain stable when they refer to the same thing as a previous usage. So two occurrences of ['LocalDirA'] will refer the same directory. While '[LocalDirB]'will be a different one.
 
-> Your local project directory,  say '[[NewDemoProject]]' typically has to match names with the remote directory name ''{{NewDemoProject}}' '
+> Your local project directory,  say '[[ExampleDemoProject]]' typically has to match names with the remote directory name ''{{ExampleDemoProject}}' '
 
 
 >***Special rubric comments on git and other terminal commands*** Some comments may be added after terminal commands with a special 3 charcter sequence #--  
@@ -63,158 +68,109 @@ Give your new Github Web Repository a name in the next window
 
 
 ### Step 2) Establishing link between a local directory  and a GitHub Web Repo for the first time
-There are a lot of small steps to this. Assume I've created a Github Web Repo in Step 1 and called it. ***'{{NewDemoProject}}'***  
-The files for this project will be in the ***local*** directory called:  ***'[][NewDemoProject]]' ***
+There are a lot of small steps to this. Assume I've created a Github Web Repo in Step 1 and called it. ***'{{ExampleDemoProject}}'***  
+The files for this project will be in the ***local*** directory called:  ***'[[ExampleDemoProject]]' ***  
 
-#### Step 2a.  Navigate to the local git directory
+#### Step 2a).  Navigate to the local git directory ####
+
+```
+$ cd '[[ExampleDemoProject]]'  
+```
 Everything git does with this project on your machine will happen here.
-```
-$ cd '[LocalGitProjectDirectory]'  
-```
 
 #### Step 2b. Initialize the git. Let git know it will be managing the local directory.
 ```
 $ git init  #-- initialize a local diectory as a git directory
 ```
-[For the desktop APP you can do the equivalent of Steps 2a and 2b by dragging the '[LocalGitProjectDirectory]' to the big blank rectangular area.]
+>[ With the GitHub dDesktop APP you can do the equivalent of Steps 2a and 2b by dragging the '[[ExampleDemoProject]]' to the big blank rectangular area of the app. ]
 
 
 
-#### Step 2c: prepare (stage) any files for initial commit.
+#### Step 2c): Prepare (stage) any files for initial commit.
 (See glossary at top of this document.)
 Here I'll just create an empty README file. This will become the summary
 info file on the Github Web repo when you finally post it.
 This is NOT a git command, just vanilla unix.
 
 ```
-$ touch README  #-- creates an empty README file a local diectory as a git
- directory
+$ touch README  #-- creates an empty README file in the local directory as a git
+ repository
  ```
 
- #### Step 2d make git aware
+ #### Step 2d: Make git aware of the new file ('stage' the file by the add command )
  ```
 $ git add README  
 ```
-Git now knows this file is likely to be committed (see next step).
+Git now knows this file is ready to be committed (see next step).
 
-#### Step 2e Initial commit
+#### Step 2e): Execute the initial commit
 ```
 $ git commit -m '[CommentForFirstCommit]'  
 ```
 This tells git that you're serious about committing all the files that
 you've staged (via add command) since your last commit (or from scratch asin this case).
-### Step 2f: Establish a between  your local directory and the git Remote repository
+
+
+
+
+### Step 2f): Help git establish a relationship between your local directory and the GitHub Remote Repo.
 ```
-$ git remote add origin 'github@github.com:['UserGithubName']/'[NameOf Github WebRepo>].git'
+git remote add origin 'github@github.com:['UserGithubName']/'[NameOf Github WebRepo>].git'
 ```
-### Step 2g Push (publish) the last committed changes to the remote Github Reposatory
+This only has to be done once. Git will keep track of this link in this directory
+
+> [ IN the GitHub Desktop APP, you can make the link between the local and remote repositories at the first step when you find or create a Local Repository and a name for the project in the Remote Repository. Use the + button at the upper left]
+
+
+### Step 2g): Push (publish) the last committed changes to the remote Github Reposatory
+```
 git push origin master
 ```
-## Revising local directory to existing Github Web Repo
-Some time later, suppose you make chagnes
+After this initial push, the command will simply be `git push`
+
+
+
+
+
+## 3) Making changes in the local repository and publishing to existing Github Remote Repository
+
+Preliminary: Non-git work. Suppose you turn off your computer for the night. The next day,  you make changes to the README file (which was an empty file till now.)
+You also create a new test file  file '[SomeNews.txt]' with a paragraph of news in it.
+Both these files are now in the   '[[ExampleDemoProject]]' directory, the Local Repository where, where the README file is located.
 Go to local directory and make your changes normally.
+
+
+
 ```
-cd '[Existing local repository already posted at least once to Github web]'
-# [[User create/edits file newfile.txt]]
+$ cd '[[ExampleDemoProject]]'
 ```
-There are 3 steps after you've made your local changes.
+
+There are 3 substeps steps after you've made the local changes to the two files.```
+
+
+### step 3a): Notify git of changes ('stage' the files) via `git add`
 ```
-# step 1- alerts git of changes ('stages/adds' them)
-git add newfile.# 'stages the file'
-# step 2- makes the changes the OFFICIAL version (commits them)
+git add README
+git add  '[SomeNews.txt]'
+```
+
+
+#### Step 3b):- makes the changes the OFFICIAL version via `git commit`
+'''
 git commit -m '[comment sketching your changes]'
-# step 3 -- push
+
+
+### Step 3c -- Publish the changes to the Remote Repository via `git push`
+```
 git push
 ```
-## L As of 6 Nov 2014 at least somethings need to be done by hand in Bash/Dariwn
-
-## Stage 1: Local repository only: Creation, 'tracking' and 'committing'
-There are 3 basic commands here:  
-1. `git init` to initialize a local repository
-2. `git add <filename or filenamePattern>` This can do one of two things:
-  1.  Make Git aware of new files ( to start to 'track' them).  
-  2.  Prepare (Gitese:)'stage') for committing any previously added files you  have **modified** since the last `commit'3
-  . `git commit -m 'You must put a comment here'` to install  any changes or additons to the official 'latest version.'
+Note that no other arguments are necessary in this case
 
 
 
-A little more detail: Basic steps when you have a new directory (short version)
-Suppose you've got a couple of local files you want to put up on Git on the web.
-Git knows nothing about them yet even locally.
-
-```
-$ cd ~/ProjectBoffo # go to the directory -- this will be the local repository
-$ ls ~/ProjectBoffo # see what's there
-boffo1.R boffo2.R
-```
-First off we need to make Git locally aware of the project.
-```
-cd ~/ProjectBoffo
-# Next command lets  Git know you're starting a local repository in .
-$ git init  # initializes the .git
-```
-Now it's a project without any source files. We need to make Git aware of some files
-by issuing an `add` command.
-```
-# Next one adds the two R files - makes them  be 'tracked' by GIT
-$ git add *.R
-```
-Now check status from Git's perspective;
-```
-$ git status
-```
-and receive back:
-```
-On branch master
-Initial commit
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-	new file:   boffo1.R
-	new file:   boffo2.R
-  ```
-  The files from the `add` command are  now said in Gitese to be **tracked** but they haven't been **committed**
-  (they're not promoted to the starting squad yet). To promote them to latest and greatest, we have to `commit` the changes.
-
-```
-# The Unixian -m  flag stands for "message"
-$ git commit -m 'initial project version'
-```
-You can check what Git thinks has been done via:
-```
-$ git status
-```
-Which yields the soothing
-```
-On branch master
-nothing to commit, working directory clean
-```
-If there had been other files in the directory that hadn't been udergone `add` yet,
-or if we had changed one of the previously added files before a fresh `commit`, then `git status` would have let us know about it.
-
-Now if you edit boffo1.R and make some changes, you can make the changes only by 'stick'
-by issuing a fresh  `commit`.
-```
-git commit -m 'A new message after the last change'
-```
-
-##Stage 2. Posting to the web
-
-This can be done initially the GitHub app, but it's not obvious  
-1) Start GitHub app.
-2) Navigate to main menu item: [ Apple ] **[File]**  
-  ---- [GitHub Main menu]: File: Open Local Repository: *< choose directory manually >*  
-3) Navigate to main menu item:  [ Apple ] [File] [Edit] [View] **[Repository]**
-        ---- [Github Main Menu]: Repository : Push  
-  Then you'll see it in the left panel and can right click to see it on the GitHub web.  
-  Now big question is how to revise.
-
-
-
-
-This is based and may  include  excerpts from:  
+Reference; This is based on information in:
 [[1]] http://git-scm.com/book/en/v1/Git-Basics-Getting-a-Git-Repository
 and  
 [[2]] https://guides.github.com/introduction/getting-your-project-on-github/
-and
-## Really short version after [[3]]
-[ConnorD/ Youtube video](http://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&cad=rja&uact=8&ved=0CDQQtwIwBA&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTPY8UwlTIc0&ei=TvtcVJWzFoW3yQTehIDYCQ&usg=AFQjCNEwXnVBg5ZrHl4oPcfkPGvyPieyTw&bvm=bv.79184187,d.aWw)
+and [[3]]
+[ConnorD/Youtube video](http://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&cad=rja&uact=8&ved=0CDQQtwIwBA&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTPY8UwlTIc0&ei=TvtcVJWzFoW3yQTehIDYCQ&usg=AFQjCNEwXnVBg5ZrHl4oPcfkPGvyPieyTw&bvm=bv.79184187,d.aWw)
