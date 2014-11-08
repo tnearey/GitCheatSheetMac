@@ -1,31 +1,33 @@
 # GitHub cheat sheet (reference card) for Mac OS X
 ### OR: Things I had to look up between uses and was afraid to ask
 For sources, see end of this document.
-Also see https://guides.github.com/introduction/getting-your-project-on-github/
-for the desktop version (some notes on that are interspersed  in this document).
-This repository also contains a couple of annotated screenshots of the GitHub Desktop App that may be helpful.
-
-[ScreenShot1](https://github.com/tnearey/GitCheatSheetMac/blob/master/GitHub_DesktopApp_Mac_7Nov2014Page1.png)  
-[ScreenShot2](https://github.com/tnearey/GitCheatSheetMac/blob/master/GitHub_DesktopApp_Mac_7Nov2014Page2.png)
+Also see https://guides.github.com/introduction/getting-your-project-on-github/  
+As of Nov 7 2014, this only covers managing the Local Repository and publishing things to the Remote Depository.
+>For the desktop version (some notes on that are interspersed  in this document).
+>This repository also contains a couple of annotated screenshots of the GitHub Desktop App that may be helpful. Links are here:  
+> [ScreenShot1](https://github.com/tnearey/GitCheatSheetMac/blob/master/GitHub_DesktopApp_Mac_7Nov2014Page1.png)  
+> [ScreenShot2](https://github.com/tnearey/GitCheatSheetMac/blob/master/GitHub_DesktopApp_Mac_7Nov2014Page2.png)
 
 ### Glossary
-> ###Gitese. Terms used by git all the time:
->To ***initialize*** a directory: via $ git init; Lets git know the local directory exists  
+> ###Gitese. The bolded terms are  used by GitHub in all its documentation.
+>To ***initialize*** a directory: via `$ git init`; This lets the local git know the local directory exists and should be viewed as a local repository.
 
 
->To ***stage*** a file: via $ git add; Tells git you've changed a file usually because likely be commiting it.  
+>To ***stage*** a file: via `$ git add`; This informs git you've changed a file usually because likely be commiting it.  
 
 
->To ***commit*** a local repository; Tells git that all the pending 'staged' files are ready to be made official latest version of the git.  
+>To ***commit*** a local repository via `$ git commit` ; Tells git that all the pending 'staged' files are ready to be made official latest version of the files in the local git.  
 
 
->To **push** last commited changes to the GIthub Web repository.  
->file in the local git directory that will be the 'guide' document on the Git Web Repo for yourproject.
+>To **push** or publish last commited local changes to the GIthub Web Remote Repository via a `$ git push`  
+
+### Also note: the README file
+> GitHub treats one file called ***README*** or ***README.md*** (for Markdown version) in each Local Repository as a special description file that will be displayed prominently when the Local Repository is pushed to the Remote repository
 
 
 ### Other notation used here:
 > ***Local git directory*** : where a project is kept locally and where changes are made to your project using ordinary tools
-
+> The local directory becomes a ***Local Repository*** once the `git init` command is performed.
 
 > *** Github Web Repo *** or *** Remote Repository *** a place on the Github server farm where your project can be 'published'.  
 
@@ -128,7 +130,7 @@ git push origin master
 ```
 After this initial push, the command will simply be `git push`
 
-
+> [ The GitHub Desktop App lets you does the  `git push` implicitly when you push a Synchronize button.]
 
 
 
@@ -164,7 +166,8 @@ git commit -m '[comment sketching your changes]'
 ```
 git push
 ```
-Note that no other arguments are necessary in this case
+Note that no other arguments are necessary in this case.
+> [ Again, the GitHub Deskop lets you does the  `git push` implicitly when you push a Synchronize button.]
 
 
 
